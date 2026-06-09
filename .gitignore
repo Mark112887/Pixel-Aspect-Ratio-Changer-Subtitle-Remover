@@ -1,0 +1,19 @@
+# PyInstaller build artifacts
+build/
+dist/
+
+# Application output
+Processed Files/
+settings.json
+
+# Claude Code session data
+.claude/
+
+# OS junk
+Thumbs.db
+.DS_Store
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
