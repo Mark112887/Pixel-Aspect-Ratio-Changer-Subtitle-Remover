@@ -8,7 +8,7 @@ A Lightweight Windows Desktop Tool For Batch-Modifying The **Pixel Aspect Ratio 
 
 ## What It Does
 
-When Videos Are Recorded With Non-Square Pixels (Common In Dashcams, Security Cameras, And Older Consumer Electronics), They May Appear Stretched Or Squashed In Modern Players That Assume Square Pixels. This Tool Writes The Correct PAR Metadata Into The MP4 Container So The Video Displays At Its Intended **Display Aspect Ratio (DAR)**.
+This Tool Writes The Desired PAR Metadata Into The MP4 Container So The Video Display At Its Intended **Display Aspect Ratio (DAR)**. Very Useful For Removing Vertical Or Horizontal Black Bars From Videos
 
 ### Key Features
 
