@@ -90,7 +90,7 @@ For Each File, The Tool Performs Two Steps:
 ## Project Structure
 
 ```
-PAR_Tools/
+Pixel_Aspect_Ratio_Changer_Subtitle_Remover/
 ├── Pixel_Aspect_Ratio_Changer_Subtitle_Remover.py   # Main Application Source
 ├── Pixel_Aspect_Ratio_Changer_Subtitle_Remover.spec # PyInstaller Build Spec
 ├── mp4box.exe                                       # GPAC MP4Box Binary
