@@ -280,7 +280,7 @@ class App:
         self.drop_icon.place(relx=0.15, rely=0.4, anchor="center")
 
         self.drop_label = tk.Label(self.drop_frame,
-                                   text="Drag & Drop MP4 files here\nor click Browse",
+                                   text="Drag & Drop MP4 Files or Folders here\nor click Browse",
                                    font=("Segoe UI", 10), bg=CARD, fg=MUTED, justify="center")
         self.drop_label.place(relx=0.55, rely=0.4, anchor="center")
 
@@ -390,8 +390,8 @@ class App:
 
         # ── CLI args ─────────────────────────────────────────────────
         for arg in sys.argv[1:]:
-            if os.path.isfile(arg) and arg.lower().endswith(".mp4"):
-                self.add_file(arg)
+            for mp4 in self._collect_mp4s(arg):
+                self.add_file(mp4)
 
         # ── Windows drag-and-drop hook ───────────────────────────────
         self._setup_win_dnd()
@@ -444,14 +444,16 @@ class App:
                 if msg == WM_DROPFILES:
                     try:
                         count = _DragQueryFileW(wp, -1, None, 0)
-                        files = []
+                        dropped_paths = []
                         for i in range(count):
                             buf = ctypes.create_unicode_buffer(260)
                             _DragQueryFileW(wp, i, buf, 260)
-                            files.append(buf.value)
+                            dropped_paths.append(buf.value)
                         _DragFinish(wp)
-                        added = sum(1 for f in files
-                                    if f.lower().endswith(".mp4") and self.add_file(f))
+                        mp4s = []
+                        for dp in dropped_paths:
+                            mp4s.extend(self._collect_mp4s(dp))
+                        added = sum(1 for f in mp4s if self.add_file(f))
                         self._dnd_log(f"Added {added} mp4(s).")
                     except Exception as e:
                         self._dnd_log(f"error querying drop: {e}")
@@ -465,6 +467,24 @@ class App:
 
         except Exception as e:
             self._dnd_log(f"enable failed: {type(e).__name__}: {e}")
+
+    @staticmethod
+    def _collect_mp4s(path):
+        """Return a list of .mp4 paths from *path*.
+
+        If *path* is a file → return it (if .mp4).
+        If *path* is a directory  → walk the tree and return all .mp4 files.
+        """
+        if os.path.isfile(path) and path.lower().endswith(".mp4"):
+            return [path]
+        if os.path.isdir(path):
+            mp4s = []
+            for root, _dirs, files in os.walk(path):
+                for fname in files:
+                    if fname.lower().endswith(".mp4"):
+                        mp4s.append(os.path.join(root, fname))
+            return mp4s
+        return []
 
     # -- file management --
     def _browse(self, event=None):

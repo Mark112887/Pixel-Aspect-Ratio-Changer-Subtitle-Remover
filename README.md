@@ -8,7 +8,7 @@ A Lightweight Windows Desktop Tool For Batch-Modifying The **Pixel Aspect Ratio 
 
 ## What It Does
 
-This Tool Writes The Desired PAR Metadata Into The MP4 Container So The Video Displays At The Intended **Display Aspect Ratio (DAR)**. Very Useful For Removing Vertical Or Horizontal Black Bars From Videos
+When Videos Are Recorded With Non-Square Pixels (Common In Dashcams, Security Cameras, And Older Consumer Electronics), They May Appear Stretched Or Squashed In Modern Players That Assume Square Pixels. This Tool Writes The Correct PAR Metadata Into The MP4 Container So The Video Displays At Its Intended **Display Aspect Ratio (DAR)**.
 
 ### Key Features
 
@@ -90,7 +90,7 @@ For Each File, The Tool Performs Two Steps:
 ## Project Structure
 
 ```
-Pixel_Aspect_Ratio_Changer_Subtitle_Remover/
+PAR_Tools/
 ├── Pixel_Aspect_Ratio_Changer_Subtitle_Remover.py   # Main Application Source
 ├── Pixel_Aspect_Ratio_Changer_Subtitle_Remover.spec # PyInstaller Build Spec
 ├── mp4box.exe                                       # GPAC MP4Box Binary
