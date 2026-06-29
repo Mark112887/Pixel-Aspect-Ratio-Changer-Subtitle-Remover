@@ -15,7 +15,8 @@ When Videos Are Recorded With Non-Square Pixels (Common In Dashcams, Security Ca
 - **No Re-Encoding** — Uses [GPAC MP4Box](https://gpac.wp.imt.fr/) To Modify Container Metadata Only, So Processing Is Near-Instant With Zero Quality Loss
 - **Automatic Dimension Detection** — Video Width And Height Are Grabbed Automatically From Each File; You Never Need To Enter Them Manually
 - **Batch Processing** — Add As Many MP4 Files As You Need And Process Them All At Once
-- **Drag & Drop** — Drop MP4 Files Directly Onto The Window To Add Them To The Queue
+- **Drag & Drop Files** — Drop MP4 Files Directly Onto The Window To Add Them To The Queue (Added in Version 1.1)
+- **Drag & Drop Folders** — Drop Entire Folders Onto The Window To Bulk-Add All Contained MP4 Files At Once (Added in Version 1.1)
 - **Subtitle Removal** — Optionally Strip Embedded Subtitle Tracks (TTML, TX3G) In The Same Pass
 - **Input Validation** — The DAR Field Only Accepts Digits And Colons, Preventing Invalid Entries
 - **Persistent Settings** — Remembers Your Last-Used Output Directory Between Sessions
